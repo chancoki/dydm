@@ -1,6 +1,14 @@
 window.onload = function () {
+  const id = window.localStorage.getItem('id')?window.localStorage.getItem('id') :prompt('房间号')
+  window.localStorage.setItem('id',id)
   const list = document.querySelector(".list");
-  var room = new danmaku('290935', {
+  const bt = document.querySelector('.bt')
+  bt.addEventListener('click', () => {
+    const rid = prompt('直播间号')
+    window.localStorage.setItem('id', rid&&Number.isNaN(rid)?rid:id)
+    location.reload()
+  })
+  var room = new danmaku(id, {
     debug: false, //存储到indexedDB
   });
   //系统事件
@@ -16,9 +24,9 @@ window.onload = function () {
   //消息事件
   room.on("chatmsg", function (res) {
     const duoyu = document.querySelectorAll(".duoyu");
-    if (window.screen.availHeight * 2 < duoyu.length * 45) {
+    if (window.screen.availHeight * 2 < duoyu.length * 35) {
       for (
-        let i = Number.parseInt(window.screen.availHeight / 45);
+        let i = Number.parseInt(window.screen.availHeight / 35);
         duoyu.length > i;
         i--
       ) {
@@ -80,11 +88,25 @@ window.onload = function () {
   room.on("uenter", function (res) {
     list.innerHTML += `
     <div class="duoyu" style='margin: 20px 0'>
-    <div class="danm">
-      进入
+    <div class="level" style="background:${
+      res.level <= 5
+        ? "#21B8FC"
+        : res.level <= 10
+        ? "#25D8E6"
+        : res.level <= 15
+        ? "#FDAA29"
+        : res.level <= 20
+        ? "#FD6E21"
+        : res.level <= 25
+        ? "#EC1A20"
+        : res.level <= 30
+        ? "#BE29E6"
+        : ''
+    }">
+       lv.${res.level < 10 ? "0" + res.level : res.level}
     </div>
     <div class="user">
-    ${res.nn}
+    ${res.nn} 进入直播间
     </div>
     `;
     console.log("[uenter]", `${res.nn}进入房间`);
