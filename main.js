@@ -11,7 +11,6 @@ window.onload = function () {
       window.localStorage.setItem("id", rid);
       location.reload();
     }
-    
   });
   document.title = id + "_直播间";
   var room = new danmaku(id, {
@@ -39,52 +38,27 @@ window.onload = function () {
         list.removeChild(duoyu[i]);
       }
     }
-
-    // const div = document.createElement("div");
-    // div.className = "duoyu";
     list.innerHTML += `
     <div class="duoyu">
-    <div class="level" style="background:${
-      res.level <= 5
-        ? "#21B8FC"
-        : res.level <= 10
-        ? "#25D8E6"
-        : res.level <= 15
-        ? "#FDAA29"
-        : res.level <= 20
-        ? "#FD6E21"
-        : res.level <= 25
-        ? "#EC1A20"
-        : res.level <= 30
-        ? "#BE29E6"
-        : ""
+
+    <div class="danm" style="background:${blColor(res.bl)};display:${
+      res.bl == 0 || res.bl == "" ? "none" : "block"
     }">
-       lv.${res.level < 10 ? "0" + res.level : res.level}
-    </div>
-    <div class="user">
-    ${res.nn}：
-    </div>
-    <div class="text" style="color:${
-      res.level <= 5
-        ? "#FFFFFF"
-        : res.level <= 8
-        ? "#2887EA"
-        : res.level <= 11
-        ? "#7CC752"
-        : res.level <= 14
-        ? "#FD6CB4"
-        : res.level <= 17
-        ? "#FD7F24"
-        : res.level <= 20
-        ? "#9A44F0"
-        : res.level <= 30
-        ? "#FC0D1C"
-        : ""
-    }">
-    ${res.txt}
-    </div>
+      <span style='font-size:12px;background:transparent;'>${res.bl}</span>${
+      res.bnn
+    }
     </div>
 
+    <div class="level" style="background:${levelColor(res.level)}">
+      lv.${res.level < 10 ? "0" + res.level : res.level} </div>
+      
+        <div class="user">
+          ${res.nn}:
+        </div>
+        <div class="text" style="color:${textColor(res.bl)}">
+          ${res.txt}
+        </div>
+    </div>
     `;
     // list.appendChild(div);
   });
@@ -92,27 +66,23 @@ window.onload = function () {
     console.log("[loginres]", "登录成功");
   });
   room.on("uenter", function (res) {
+    console.log(res);
     list.innerHTML += `
     <div class="duoyu" style='margin: 20px 0'>
-    <div class="level" style="background:${
-      res.level <= 5
-        ? "#21B8FC"
-        : res.level <= 10
-        ? "#25D8E6"
-        : res.level <= 15
-        ? "#FDAA29"
-        : res.level <= 20
-        ? "#FD6E21"
-        : res.level <= 25
-        ? "#EC1A20"
-        : res.level <= 30
-        ? "#BE29E6"
-        : ""
+
+    <div class="danm" style="background:${blColor(res.bl)};display:${
+      res.bl == 0 || res.bl == "" || !res.bl ? "none" : "block"
     }">
-       lv.${res.level < 10 ? "0" + res.level : res.level}
+      <span style='font-size:12px;background:transparent;'>${res.bl}</span>${
+      res.bnn
+    }
     </div>
-    <div class="user">
-    ${res.nn} 进入直播间
+
+    <div class="level" style="background:${levelColor(res.level)}">
+      lv.${res.level < 10 ? "0" + res.level : res.level} </div>
+        <div class="user">
+          ${res.nn} 进入直播间
+        </div>
     </div>
     `;
     console.log("[uenter]", `${res.nn}进入房间`);
@@ -121,8 +91,41 @@ window.onload = function () {
   room.run();
 
   //导出日志(不传入房间号默认为所有)
-  room.logger.export(房间号);
+  room.logger.export(id);
 
   //清除日志(不传入房间号默认为所有)
-  room.logger.clear(房间号);
+  room.logger.clear(id);
+  function blColor(n) {
+    if (n <= 5) return "#21B8FC";
+    if (n <= 10) return "#25D8E6";
+    if (n <= 15) return "#FDAA29";
+    if (n <= 20) return "#FD6E21";
+    if (n <= 25) return "#EC1A20";
+    if (n <= 30) return "#BE29E6";
+  }
+  function textColor(n) {
+    if (n <= 5) return "#777777";
+    if (n <= 8) return "#2887EA";
+    if (n <= 11) return "#7CC752";
+    if (n <= 14) return "#FD6CB4";
+    if (n <= 17) return "#FD7F24";
+    if (n <= 20) return "#BE29E6";
+    if (n <= 30) return "#FC0D1C";
+  }
+  function levelColor(n) {
+    if (n <= 19) return "#D39753";
+    if (n <= 29) return "#77DF85";
+    if (n <= 39) return "#36C3F0";
+    if (n <= 49) return "#3872DC";
+    if (n <= 59) return "#7066FA";
+    if (n <= 69) return "#762AF7";
+    if (n <= 79) return "#9828C2";
+    if (n <= 89) return "#EF096E";
+    if (n <= 99) return "#DE011D";
+    if (n <= 109) return "#FF511E";
+    if (n <= 119) return "#FF8400";
+    if (n <= 124) return "#FFA717";
+    if (n <= 129) return "#8916F0";
+    return "#C70137";
+  }
 };
