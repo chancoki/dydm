@@ -29,9 +29,9 @@ window.onload = function () {
   //消息事件
   room.on("chatmsg", function (res) {
     const duoyu = document.querySelectorAll(".duoyu");
-    if (window.screen.availHeight * 2 < duoyu.length * 35) {
+    if (window.screen.availHeight * 2 < duoyu.length * 25) {
       for (
-        let i = Number.parseInt(window.screen.availHeight / 35);
+        let i = Number.parseInt(window.screen.availHeight / 25);
         duoyu.length > i;
         i--
       ) {
