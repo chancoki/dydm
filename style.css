@@ -1,15 +1,16 @@
 .list {
-  overflow: auto;
-  font-size: 30px;
+  overflow: hidden;
+  font-size: 20px;
 }
 .duoyu {
   display: flex;
   gap: 5px;
   margin-bottom: 5px;
+  height: 30px;
 }
 .duoyu .danm {
   flex-shrink: 0;
-  width: 100px;
+  width: 70px;
   background-color: #EF6B00;
   border-radius: 5px;
   text-align: center;
@@ -18,7 +19,7 @@
 }
 .duoyu .level {
   flex-shrink: 0;
-  width: 100px;
+  width: 70px;
   text-align: center;
   background-color: #91E3A0;
   border-radius: 5px;
@@ -34,4 +35,18 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+.bt {
+  height: 45px;
+  width: 45px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  border-radius: 30px;
+  padding: 5px;
+  border: none;
+  font-size: 12px;
+  background-color: #E75924;
+  color: aliceblue;
+  cursor: pointer;
 }
