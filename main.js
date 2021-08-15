@@ -72,7 +72,7 @@ window.onload = function () {
     <div class="danm" style="background:${blColor(res.bl)};display:${
       res.bl == 0 || res.bl == "" ? "none" : "block"
     }">
-      <span style='font-size:12px;background:transparent;'>${res.bl}</span>${
+      <span style='font-size:12px;background:transparent;'>${res.bl} </span>${
       res.bnn
     }
     </div>
