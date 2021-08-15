@@ -7,8 +7,11 @@ window.onload = function () {
   const bt = document.querySelector(".bt");
   bt.addEventListener("click", () => {
     const rid = prompt("直播间号");
-    window.localStorage.setItem("id", rid);
-    location.reload();
+    if (rid) {
+      window.localStorage.setItem("id", rid);
+      location.reload();
+    }
+    
   });
   document.title = id + "_直播间";
   var room = new danmaku(id, {
