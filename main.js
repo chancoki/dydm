@@ -1,13 +1,16 @@
 window.onload = function () {
-  const id = window.localStorage.getItem('id')?window.localStorage.getItem('id') :prompt('房间号')
-  window.localStorage.setItem('id',id)
+  const id = window.localStorage.getItem("id")
+    ? window.localStorage.getItem("id")
+    : prompt("房间号");
+  window.localStorage.setItem("id", id);
   const list = document.querySelector(".list");
-  const bt = document.querySelector('.bt')
-  bt.addEventListener('click', () => {
-    const rid = prompt('直播间号')
-    window.localStorage.setItem('id', rid&&Number.isNaN(rid)?rid:id)
-    location.reload()
-  })
+  const bt = document.querySelector(".bt");
+  bt.addEventListener("click", () => {
+    const rid = prompt("直播间号");
+    window.localStorage.setItem("id", rid);
+    location.reload();
+  });
+  document.title = id + "_直播间";
   var room = new danmaku(id, {
     debug: false, //存储到indexedDB
   });
@@ -51,7 +54,7 @@ window.onload = function () {
         ? "#EC1A20"
         : res.level <= 30
         ? "#BE29E6"
-        : ''
+        : ""
     }">
        lv.${res.level < 10 ? "0" + res.level : res.level}
     </div>
@@ -73,7 +76,7 @@ window.onload = function () {
         ? "#9A44F0"
         : res.level <= 30
         ? "#FC0D1C"
-        : ''
+        : ""
     }">
     ${res.txt}
     </div>
@@ -101,7 +104,7 @@ window.onload = function () {
         ? "#EC1A20"
         : res.level <= 30
         ? "#BE29E6"
-        : ''
+        : ""
     }">
        lv.${res.level < 10 ? "0" + res.level : res.level}
     </div>
