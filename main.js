@@ -101,6 +101,7 @@ window.onload = function () {
     if (n <= 20) return "#FD6E21";
     if (n <= 25) return "#EC1A20";
     if (n <= 30) return "#BE29E6";
+    return '#D86EFE'
   }
   function textColor(n) {
     if (n <= 5) return "#777777";
@@ -110,6 +111,7 @@ window.onload = function () {
     if (n <= 17) return "#FD7F24";
     if (n <= 20) return "#BE29E6";
     if (n <= 30) return "#FC0D1C";
+    return '#FC0D1C';
   }
   function levelColor(n) {
     if (n <= 14) return "#D39753";
