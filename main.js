@@ -1,7 +1,16 @@
 window.onload = function () {
+  let flag = true;
   const id = window.localStorage.getItem("id")
     ? window.localStorage.getItem("id")
     : prompt("直播间号");
+  const cut = document.querySelector(".cut");
+  const ligth = window.localStorage.getItem("ligth")
+    ? JSON.parse(window.localStorage.getItem("ligth"))
+    : { color: "#F2F5F6", title: "关灯" };
+  document.body.style.background = ligth.color;
+  cut.innerText = ligth.title;
+  flag = "#F2F5F6" == ligth.color;
+
   window.localStorage.setItem("id", id);
   const list = document.querySelector(".list");
   const bt = document.querySelector(".bt");
@@ -12,18 +21,25 @@ window.onload = function () {
       location.reload();
     }
   });
-  const cut = document.querySelector('.cut')
-  let flag = true
-  cut.addEventListener('click', () => {
+
+  cut.addEventListener("click", () => {
     if (flag) {
-      document.body.style.background = '#232427'
-      cut.innerText = '开灯'
+      document.body.style.background = "#232427";
+      cut.innerText = "开灯";
+      window.localStorage.setItem(
+        "ligth",
+        JSON.stringify({ color: "#232427", title: "开灯" })
+      );
     } else {
-      document.body.style.background = '#F2F5F6'
-      cut.innerText = '关灯'
+      document.body.style.background = "#F2F5F6";
+      cut.innerText = "关灯";
+      window.localStorage.setItem(
+        "ligth",
+        JSON.stringify({ color: "#F2F5F6", title: "关灯" })
+      );
     }
-    flag=!flag
-  })
+    flag = !flag;
+  });
   document.title = id + "_直播间";
   var room = new danmaku(id, {
     debug: false, //存储到indexedDB
@@ -114,7 +130,7 @@ window.onload = function () {
     if (n <= 20) return "#FD6E21";
     if (n <= 25) return "#EC1A20";
     if (n <= 30) return "#BE29E6";
-    return '#D86EFE'
+    return "#D86EFE";
   }
   function textColor(n) {
     if (n <= 5) return "#777777";
@@ -124,7 +140,7 @@ window.onload = function () {
     if (n <= 17) return "#FD7F24";
     if (n <= 20) return "#BE29E6";
     if (n <= 30) return "#FC0D1C";
-    return 'FC0D1C'
+    return "#FC0D1C"
   }
   function levelColor(n) {
     if (n <= 14) return "#D39753";
