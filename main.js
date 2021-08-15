@@ -1,7 +1,7 @@
 window.onload = function () {
   const id = window.localStorage.getItem("id")
     ? window.localStorage.getItem("id")
-    : prompt("房间号");
+    : prompt("直播间号");
   window.localStorage.setItem("id", id);
   const list = document.querySelector(".list");
   const bt = document.querySelector(".bt");
@@ -12,6 +12,18 @@ window.onload = function () {
       location.reload();
     }
   });
+  const cut = document.querySelector('.cut')
+  let flag = true
+  cut.addEventListener('click', () => {
+    if (flag) {
+      document.body.style.background = '#232427'
+      cut.innerText = '开灯'
+    } else {
+      document.body.style.background = '#F2F5F6'
+      cut.innerText = '关灯'
+    }
+    flag=!flag
+  })
   document.title = id + "_直播间";
   var room = new danmaku(id, {
     debug: false, //存储到indexedDB
@@ -66,6 +78,7 @@ window.onload = function () {
     console.log("[loginres]", "登录成功");
   });
   room.on("uenter", function (res) {
+    console.log(res);
     list.innerHTML += `
     <div class="duoyu" style='margin: 20px 0'>
 
@@ -111,7 +124,7 @@ window.onload = function () {
     if (n <= 17) return "#FD7F24";
     if (n <= 20) return "#BE29E6";
     if (n <= 30) return "#FC0D1C";
-    return '#FC0D1C';
+    return 'FC0D1C'
   }
   function levelColor(n) {
     if (n <= 14) return "#D39753";
