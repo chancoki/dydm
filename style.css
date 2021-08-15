@@ -15,7 +15,7 @@ body {
 .duoyu .danm {
   flex-shrink: 0;
   min-width: 40px;
-  padding: 0 5px;
+  padding: 0 4px;
   border-radius: 5px;
   text-align: center;
   color: aliceblue;
@@ -23,6 +23,7 @@ body {
 .duoyu .level {
   flex-shrink: 0;
   min-width: 40px;
+  padding: 0 4px;
   text-align: center;
   background-color: #91E3A0;
   border-radius: 5px;
@@ -30,7 +31,7 @@ body {
 }
 .duoyu .user {
   flex-shrink: 0;
-  min-width: 70px;
+  min-width: 40px;
   color: #E75924;
 }
 .duoyu .text {
