@@ -13,7 +13,7 @@ body {
 }
 .duoyu .danm {
   flex-shrink: 0;
-  min-width: 60px;
+  min-width: 45px;
   padding: 0 5px;
   border-radius: 5px;
   text-align: center;
