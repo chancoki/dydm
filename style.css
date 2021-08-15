@@ -10,8 +10,8 @@
 }
 .duoyu .danm {
   flex-shrink: 0;
-  width: 50px;
-  background-color: #EF6B00;
+  min-width: 60px;
+  padding: 0 5px;
   border-radius: 5px;
   text-align: center;
   color: aliceblue;
