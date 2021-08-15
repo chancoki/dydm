@@ -78,7 +78,7 @@ window.onload = function () {
     </div>
 
     <div class="level" style="background:${levelColor(res.level)}">
-      lv.${res.level < 10 ? "0" + res.level : res.level} </div>
+      <i>lv.</i>${res.level < 10 ? "0" + res.level : res.level} </div>
       
         <div class="user">
           ${res.nn}:
@@ -107,7 +107,7 @@ window.onload = function () {
     </div>
 
     <div class="level" style="background:${levelColor(res.level)}">
-      lv.${res.level < 10 ? "0" + res.level : res.level} </div>
+     <i>lv.</i>${res.level < 10 ? "0" + res.level : res.level} </div>
         <div class="user">
           ${res.nn} 进入直播间
         </div>
