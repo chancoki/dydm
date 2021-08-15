@@ -112,7 +112,7 @@ window.onload = function () {
     if (n <= 30) return "#FC0D1C";
   }
   function levelColor(n) {
-    if (n <= 19) return "#D39753";
+    if (n <= 14) return "#D39753";
     if (n <= 29) return "#77DF85";
     if (n <= 39) return "#36C3F0";
     if (n <= 49) return "#3872DC";
