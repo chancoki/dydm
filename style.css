@@ -1,5 +1,4 @@
 body {
-  background: #F2F5F6;
   transition: all 0.7s;
 }
 .list {
@@ -42,7 +41,7 @@ body {
 }
 .bt {
   z-index: 9999;
-  opacity: 0.1;
+  opacity: 0.08;
   height: 45px;
   width: 45px;
   position: fixed;
