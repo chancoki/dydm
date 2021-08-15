@@ -66,7 +66,6 @@ window.onload = function () {
     console.log("[loginres]", "登录成功");
   });
   room.on("uenter", function (res) {
-    console.log(res);
     list.innerHTML += `
     <div class="duoyu" style='margin: 20px 0'>
 
