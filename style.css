@@ -1,3 +1,7 @@
+body {
+  background: #F2F5F6;
+  transition: all 0.7s;
+}
 .list {
   overflow: hidden;
   font-size: 16px;
@@ -37,6 +41,8 @@
   text-overflow: ellipsis;
 }
 .bt {
+  z-index: 9999;
+  opacity: 0.1;
   height: 45px;
   width: 45px;
   position: fixed;
@@ -49,4 +55,11 @@
   background-color: #E75924;
   color: aliceblue;
   cursor: pointer;
+  transition: all 0.3s;
+}
+.bt:hover {
+  opacity: 1;
+}
+.cut {
+  top: 70px;
 }
