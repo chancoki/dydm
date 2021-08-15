@@ -1,16 +1,16 @@
 .list {
   overflow: hidden;
-  font-size: 20px;
+  font-size: 16px;
 }
 .duoyu {
   display: flex;
   gap: 5px;
   margin-bottom: 5px;
-  height: 30px;
+  height: 23px;
 }
 .duoyu .danm {
   flex-shrink: 0;
-  width: 70px;
+  width: 50px;
   background-color: #EF6B00;
   border-radius: 5px;
   text-align: center;
@@ -19,7 +19,7 @@
 }
 .duoyu .level {
   flex-shrink: 0;
-  width: 70px;
+  width: 50px;
   text-align: center;
   background-color: #91E3A0;
   border-radius: 5px;
