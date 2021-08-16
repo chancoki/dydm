@@ -8,7 +8,7 @@ body {
 }
 .duoyu {
   display: flex;
-  gap: 5px;
+  gap: 3px;
   margin-bottom: 8px;
   height: 23px;
 }
