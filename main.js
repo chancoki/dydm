@@ -63,7 +63,7 @@ window.onload = function () {
   });
   //消息事件
   room.on("chatmsg", function (res) {
-    if (list.children.length > 100) list.removeChild(list.children[0]);
+    if (list.children.length > 99) list.removeChild(list.children[0]);
     const div = document.createElement("div");
     div.className = "duoyu";
     div.innerHTML = `
@@ -127,6 +127,7 @@ window.onload = function () {
     if (n <= 30) return "#BE29E6";
     return "#D86EFE";
   }
+  
   function textColor(n) {
     if (n <= 5) return "#777777";
     if (n <= 8) return "#2887EA";
@@ -137,6 +138,7 @@ window.onload = function () {
     if (n <= 30) return "#FC0D1C";
     return "#FC0D1C";
   }
+  
   function levelColor(n) {
     if (n <= 14) return "#D39753";
     if (n <= 29) return "#77DF85";
