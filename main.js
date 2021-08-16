@@ -66,9 +66,10 @@ window.onload = function () {
         list.removeChild(duoyu[i]);
       }
     }
-    list.innerHTML += `
-    <div class="duoyu">
-
+    const div = document.createElement("div");
+    div.className = "duoyu";
+    div.innerHTML = `
+    
     <div class="danm" style="background:${blColor(res.bl)};display:${
       res.bl == 0 || res.bl == "" ? "none" : "block"
     }">
@@ -76,30 +77,29 @@ window.onload = function () {
       res.bnn
     }
     </div>
-
     <div class="level" style="background:${levelColor(res.level)}">
       <i>lv.</i>${res.level < 10 ? "0" + res.level : res.level} </div>
-      
         <div class="user">
           ${res.nn}:
         </div>
         <div class="text" style="color:${textColor(res.bl)}">
           ${res.txt}
         </div>
-    </div>
+ 
     `;
-    // list.appendChild(div);
+    list.appendChild(div);
   });
   room.on("loginres", function (res) {
     console.log("[loginres]", "登录成功");
-    const room = document.querySelector('.room')
-    room.style.display = 'block'
-    room.innerHTML=id
+    const room = document.querySelector(".room");
+    room.style.display = "block";
+    room.innerHTML = id;
   });
   room.on("uenter", function (res) {
-    list.innerHTML += `
+    const div = document.createElement("div");
+    div.className = "duoyu";
+    div.innerHTML = `
     <div class="duoyu">
-
     <div class="danm" style="background:${blColor(res.bl)};display:${
       res.bl == 0 || res.bl == "" || !res.bl ? "none" : "block"
     }">
@@ -107,14 +107,14 @@ window.onload = function () {
       res.bnn
     }
     </div>
-
     <div class="level" style="background:${levelColor(res.level)}">
-     <i>lv.</i>${res.level < 10 ? "0" + res.level : res.level} </div>
+      <i>lv.</i>${res.level < 10 ? "0" + res.level : res.level} </div>
         <div class="user">
           ${res.nn} <span style='color:#777777'>欢迎来到本直播间</span>
         </div>
     </div>
     `;
+    list.appendChild(div);
     console.log("[uenter]", `${res.nn}进入房间`);
   });
   //开始监听
