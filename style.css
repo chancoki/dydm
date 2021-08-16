@@ -11,37 +11,37 @@ body {
   gap: 3px;
   margin-bottom: 8px;
   height: 18px;
-  animation: go .1s ease-in-out;
+  animation: go 0.1s ease-in-out;
   overflow: hidden;
   transform-origin: 0 100%;
-  .danm {
-    flex-shrink: 0;
-    min-width: 30px;
-    padding: 0 2px;
-    border-radius: 3px;
-    text-align: center;
-    color: aliceblue;
-  }
-  .level {
-    flex-shrink: 0;
-    min-width: 30px;
-    padding: 0 2px;
-    text-align: center;
-    background-color: #91e3a0;
-    border-radius: 3px;
-    color: aliceblue;
-  }
-  .user {
-    flex-shrink: 0;
-    min-width: 20px;
-    color: #e75924;
-  }
-  .text {
-    height: 45px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
+}
+.duoyu .danm {
+  flex-shrink: 0;
+  min-width: 30px;
+  padding: 0 2px;
+  border-radius: 3px;
+  text-align: center;
+  color: aliceblue;
+}
+.duoyu .level {
+  flex-shrink: 0;
+  min-width: 30px;
+  padding: 0 2px;
+  text-align: center;
+  background-color: #91e3a0;
+  border-radius: 3px;
+  color: aliceblue;
+}
+.duoyu .user {
+  flex-shrink: 0;
+  min-width: 20px;
+  color: #e75924;
+}
+.duoyu .text {
+  height: 45px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .bt {
   z-index: 9999;
@@ -59,20 +59,20 @@ body {
   color: aliceblue;
   cursor: pointer;
   transition: all 0.3s;
-  &:hover {
-    opacity: 1;
-  }
+}
+.bt:hover {
+  opacity: 1;
 }
 .cut {
   top: 70px;
 }
-.room{
+.room {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   font-size: 8rem;
-  opacity: .03;
+  opacity: 0.03;
   color: #777;
   display: none;
   user-select: none;
@@ -81,9 +81,7 @@ body {
 @keyframes go {
   0% {
     transform: rotateY(90deg) translateX(-20px);
-    
   }
-
   100% {
     transform: rotateY(0deg) translateX(0);
   }
