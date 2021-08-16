@@ -63,7 +63,7 @@ window.onload = function () {
   });
   //消息事件
   room.on("chatmsg", function (res) {
-    if (list.children.length > 150) list.removeChild(list.children[0]);
+    if (list.children.length > 100) list.removeChild(list.children[0]);
     const div = document.createElement("div");
     div.className = "duoyu";
     div.innerHTML = `
