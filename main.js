@@ -95,7 +95,7 @@ window.onload = function () {
   });
   room.on("uenter", function (res) {
     list.innerHTML += `
-    <div class="duoyu" style='margin: 20px 0'>
+    <div class="duoyu">
 
     <div class="danm" style="background:${blColor(res.bl)};display:${
       res.bl == 0 || res.bl == "" || !res.bl ? "none" : "block"
