@@ -1,60 +1,44 @@
 body {
   transition: all 0.7s;
+  font-size: 12px;
 }
 .list {
-  overflow: hidden;
-  font-size: 12px;
   width: 98vw;
 }
 .duoyu {
-  display: flex;
-  gap: 3px;
   margin-bottom: 8px;
-  height: 18px;
   animation: go 0.1s ease-in-out;
-  overflow: hidden;
   transform-origin: 0 100%;
 }
-.duoyu .danm {
-  flex-shrink: 0;
-  min-width: 30px;
-  padding: 0 2px;
-  border-radius: 3px;
-  text-align: center;
-  color: aliceblue;
-}
+.duoyu .danm,
 .duoyu .level {
-  flex-shrink: 0;
+  display: inline-block;
   min-width: 30px;
   padding: 0 2px;
-  text-align: center;
-  background-color: #91e3a0;
   border-radius: 3px;
+  text-align: center;
   color: aliceblue;
 }
 .duoyu .user {
+  display: inline-block;
   flex-shrink: 0;
   min-width: 20px;
   color: #e75924;
 }
 .duoyu .text {
-  height: 45px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  display: inline-block;
 }
 .bt {
   z-index: 9999;
   opacity: 0.07;
-  height: 45px;
-  width: 45px;
+  height: 40px;
+  width: 22px;
   position: fixed;
   top: 20px;
-  right: 20px;
-  border-radius: 30px;
-  padding: 5px;
+  right: 0;
+  border-radius: 2px 0 0 2px;
+  outline: none;
   border: none;
-  font-size: 12px;
   background-color: #e75924;
   color: aliceblue;
   cursor: pointer;
@@ -64,7 +48,7 @@ body {
   opacity: 1;
 }
 .cut {
-  top: 70px;
+  top: 65px;
 }
 .room {
   position: fixed;
