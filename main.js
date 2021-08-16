@@ -1,5 +1,6 @@
 window.onload = function () {
   let flag = true;
+  const roomEle = document.querySelector(".room");
   const id = window.localStorage.getItem("id")
     ? window.localStorage.getItem("id")
     : prompt("直播间号");
@@ -46,13 +47,19 @@ window.onload = function () {
   });
   //系统事件
   room.on("connect", function () {
-    console.log("[connect] roomId=%s", this.roomId);
+    roomEle.style.display = "block";
+    roomEle.innerHTML = "连接完成";
   });
   room.on("disconnect", function () {
     console.log("[disconnect] roomId=%s", this.roomId);
   });
   room.on("error", function (err) {
-    console.log("[error] roomId=%s", this.roomId);
+    roomEle.style.display = "block";
+    roomEle.innerHTML = "出现错误";
+  });
+  room.on("loginres", function (res) {
+    roomEle.style.display = "block";
+    roomEle.innerHTML = id;
   });
   //消息事件
   room.on("chatmsg", function (res) {
@@ -63,20 +70,26 @@ window.onload = function () {
         duoyu.length > i;
         i--
       ) {
-        list.removeChild(duoyu[i]);
+        try {
+          list.removeChild(duoyu[i]);
+        } catch {
+          return;
+        }
       }
     }
     const div = document.createElement("div");
     div.className = "duoyu";
     div.innerHTML = `
-    
-    <div class="danm" style="background:${blColor(res.bl)};display:${
-      res.bl == 0 || res.bl == "" ? "none" : "block"
-    }">
-      <span style='font-size:12px;background:transparent;'>${res.bl}</span>${
-      res.bnn
+    ${
+      res.bl == 0 || res.bl == "" || !res.bl
+        ? ""
+        : `<div class="danm" style="background:${blColor(res.bl)};">
+        <span style='font-size:12px;background:transparent;'>${res.bl}</span>${
+            res.bnn
+          }
+      </div>`
     }
-    </div>
+    
     <div class="level" style="background:${levelColor(res.level)}">
       <i>lv.</i>${res.level < 10 ? "0" + res.level : res.level} </div>
         <div class="user">
@@ -85,37 +98,30 @@ window.onload = function () {
         <div class="text" style="color:${textColor(res.bl)}">
           ${res.txt}
         </div>
- 
     `;
     list.appendChild(div);
-  });
-  room.on("loginres", function (res) {
-    console.log("[loginres]", "登录成功");
-    const room = document.querySelector(".room");
-    room.style.display = "block";
-    room.innerHTML = id;
   });
   room.on("uenter", function (res) {
     const div = document.createElement("div");
     div.className = "duoyu";
     div.innerHTML = `
-    <div class="duoyu">
-    <div class="danm" style="background:${blColor(res.bl)};display:${
-      res.bl == 0 || res.bl == "" || !res.bl ? "none" : "block"
-    }">
-      <span style='font-size:12px;background:transparent;'>${res.bl}</span>${
-      res.bnn
+    ${
+      res.bl == 0 || res.bl == "" || !res.bl
+        ? ""
+        : `<div class="danm" style="background:${blColor(res.bl)};">
+        <span style='font-size:12px;background:transparent;'>${res.bl}</span>${
+            res.bnn
+          }
+      </div>`
     }
-    </div>
     <div class="level" style="background:${levelColor(res.level)}">
       <i>lv.</i>${res.level < 10 ? "0" + res.level : res.level} </div>
         <div class="user">
           ${res.nn} <span style='color:#777777'>欢迎来到本直播间</span>
         </div>
-    </div>
+
     `;
     list.appendChild(div);
-    console.log("[uenter]", `${res.nn}进入房间`);
   });
   //开始监听
   room.run();
@@ -142,7 +148,7 @@ window.onload = function () {
     if (n <= 17) return "#FD7F24";
     if (n <= 20) return "#BE29E6";
     if (n <= 30) return "#FC0D1C";
-    return "#FC0D1C"
+    return "#FC0D1C";
   }
   function levelColor(n) {
     if (n <= 14) return "#D39753";
