@@ -63,3 +63,15 @@ body {
 .cut {
   top: 70px;
 }
+.room{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 8rem;
+  opacity: .03;
+  color: #777;
+  display: none;
+  user-select: none;
+  z-index: -1;
+}
