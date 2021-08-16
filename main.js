@@ -92,6 +92,9 @@ window.onload = function () {
   });
   room.on("loginres", function (res) {
     console.log("[loginres]", "登录成功");
+    const room = document.querySelector('.room')
+    room.style.display = 'block'
+    room.innerHTML=id
   });
   room.on("uenter", function (res) {
     list.innerHTML += `
