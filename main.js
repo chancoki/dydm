@@ -71,7 +71,7 @@ window.onload = function () {
       res.bl == 0 || res.bl == "" || !res.bl
         ? ""
         : `<div class="danm" style="background:${blColor(res.bl)};">
-        <span style='font-size:12px;background:transparent;'>${res.bl}</span>${
+        <span style='background:transparent;'>${res.bl}</span>${
             res.bnn
           }
       </div>`
@@ -97,7 +97,7 @@ window.onload = function () {
       res.bl == 0 || res.bl == "" || !res.bl
         ? ""
         : `<div class="danm" style="background:${blColor(res.bl)};">
-        <span style='font-size:12px;background:transparent;'>${res.bl}</span>${
+        <span style='background:transparent;'>${res.bl}</span>${
             res.bnn
           }
       </div>`
