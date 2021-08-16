@@ -63,20 +63,7 @@ window.onload = function () {
   });
   //消息事件
   room.on("chatmsg", function (res) {
-    const duoyu = document.querySelectorAll(".duoyu");
-    if (window.screen.availHeight * 2 < duoyu.length * 25) {
-      for (
-        let i = Number.parseInt(window.screen.availHeight / 25);
-        duoyu.length > i;
-        i--
-      ) {
-        try {
-          list.removeChild(duoyu[i]);
-        } catch {
-          return;
-        }
-      }
-    }
+    if (list.children.length > 150) list.removeChild(list.children[0]);
     const div = document.createElement("div");
     div.className = "duoyu";
     div.innerHTML = `
