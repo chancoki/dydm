@@ -108,7 +108,7 @@ window.onload = function () {
     <div class="level" style="background:${levelColor(res.level)}">
      <i>lv.</i>${res.level < 10 ? "0" + res.level : res.level} </div>
         <div class="user">
-          ${res.nn} 进入直播间
+          ${res.nn} <span style='color:#777777'>欢迎来到本直播间</span>
         </div>
     </div>
     `;
