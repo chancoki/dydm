@@ -159,6 +159,7 @@ window.onload = function () {
   msg.addEventListener('click', () => {
     scrollFlag = true;
     list.scrollTo(0, list.scrollHeight);
+    msg.style.display = 'none';
   })
   list.addEventListener(
     "touchstart",
