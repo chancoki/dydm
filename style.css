@@ -10,23 +10,20 @@ body {
   animation: go 0.1s ease-in-out;
   transform-origin: 0 100%;
 }
+.duoyu > div {
+  display: inline;
+  min-width: 10px;
+}
 .duoyu .danm,
 .duoyu .level {
-  display: inline-block;
-  min-width: 30px;
-  padding: 0 2px;
+  margin-right: 3px;
+  padding: 0 3px;
   border-radius: 3px;
   text-align: center;
   color: aliceblue;
 }
 .duoyu .user {
-  display: inline-block;
-  flex-shrink: 0;
-  min-width: 20px;
   color: #e75924;
-}
-.duoyu .text {
-  display: inline-block;
 }
 .bt {
   z-index: 9999;
