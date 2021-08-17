@@ -1,6 +1,7 @@
 window.onload = function () {
   let flag = true;
   const roomEle = document.querySelector(".room");
+  const msg = document.querySelector('.msg')
   const id = window.localStorage.getItem("id")
     ? window.localStorage.getItem("id")
     : prompt("直播间号");
@@ -22,6 +23,7 @@ window.onload = function () {
       location.reload();
     }
   });
+
 
   cut.addEventListener("click", () => {
     if (flag) {
@@ -64,12 +66,9 @@ window.onload = function () {
   //消息事件
   let scrollFlag = true;
   room.on("chatmsg", function (res) {
-    if (scrollFlag) {
-      list.scrollTo(0, list.scrollHeight);
-    } else {
-      scrollTime();
-    }
-
+    scrollTime();
+    if (scrollFlag) list.scrollTo(0, list.scrollHeight);
+    
     if (list.children.length > 150) list.removeChild(list.children[0]);
     const div = document.createElement("div");
     div.className = "duoyu";
@@ -88,7 +87,8 @@ window.onload = function () {
     list.appendChild(div);
   });
   room.on("uenter", function (res) {
-    list.scrollTo(0, list.scrollHeight);
+    scrollTime();
+    if (scrollFlag) list.scrollTo(0, list.scrollHeight);
     if (list.children.length > 150) list.removeChild(list.children[0]);
     const div = document.createElement("div");
     div.className = "duoyu";
@@ -145,27 +145,21 @@ window.onload = function () {
     if (n <= 129) return "#8916F0";
     return "#C70137";
   }
-  list.addEventListener(
-    "mousewheel",
-    (e) => {
-      if (e.deltaY < 0) scrollFlag = false;
-    },
-    false
-  );
-  document.addEventListener(
-    "DOMMouseScroll",
-    (e) => {
-      if (e.detail < 0) scrollFlag = false;
-    },
-    false
-  );
   function scrollTime() {
     const scrollTop = list.scrollHeight - list.scrollTop;
     const clientH = document.documentElement.clientHeight;
     if (scrollTop <= clientH + clientH / 4) {
       scrollFlag = true;
+      msg.style.display = 'none'
+    } else {
+      scrollFlag = false
+      msg.style.display='block'
     }
   }
+  msg.addEventListener('click', () => {
+    scrollFlag = true;
+    list.scrollTo(0, list.scrollHeight);
+  })
   list.addEventListener(
     "touchstart",
     function (e) {
@@ -184,9 +178,11 @@ window.onload = function () {
       switch (direction) {
         case 1:
           scrollFlag = true;
+          msg.style.display = 'none'
           break;
         case 2:
           scrollFlag = false;
+          msg.style.display='block'
           break;
         default:
       }
@@ -194,18 +190,15 @@ window.onload = function () {
     false
   );
   var startx, starty;
-  //获得角度
+  
   function getAngle(angx, angy) {
     return (Math.atan2(angy, angx) * 180) / Math.PI;
   }
 
-  //根据起点终点返回方向 1向上 2向下 3向左 4向右 0未滑动
   function getDirection(startx, starty, endx, endy) {
     var angx = endx - startx;
     var angy = endy - starty;
     var result = 0;
-
-    //如果滑动距离太短
     if (Math.abs(angx) < 2 && Math.abs(angy) < 2) {
       return result;
     }
