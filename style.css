@@ -7,8 +7,6 @@ body {
 }
 .duoyu {
   margin-bottom: 8px;
-  animation: go 0.1s ease-in-out;
-  transform-origin: 0 100%;
 }
 .duoyu > div {
   display: inline;
@@ -58,12 +56,4 @@ body {
   display: none;
   user-select: none;
   z-index: -1;
-}
-@keyframes go {
-  0% {
-    transform: rotateY(90deg) translateX(-20px);
-  }
-  100% {
-    transform: rotateY(0deg) translateX(0);
-  }
 }
