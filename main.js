@@ -64,7 +64,11 @@ window.onload = function () {
   //消息事件
   let scrollFlag = true;
   room.on("chatmsg", function (res) {
-    if (scrollFlag) list.scrollTo(0, list.scrollHeight);
+    if (scrollFlag) {
+      list.scrollTo(0, list.scrollHeight);
+    } else {
+      scrollTime();
+    }
 
     if (list.children.length > 150) list.removeChild(list.children[0]);
     const div = document.createElement("div");
@@ -145,14 +149,24 @@ window.onload = function () {
     "mousewheel",
     (e) => {
       if (e.deltaY < 0) scrollFlag = false;
-      if (e.deltaY > 0) scrollFlag = true;
     },
     false
   );
-  document.addEventListener('DOMMouseScroll', (e) => {
-    if (e.detail < 0) scrollFlag = false;
-    if (e.detail > 0) scrollFlag = true;
-  }, false);
+  document.addEventListener(
+    "DOMMouseScroll",
+    (e) => {
+      if (e.detail < 0) scrollFlag = false;
+    },
+    false
+  );
+  function scrollTime() {
+    const scrollTop = list.scrollHeight - list.scrollTop;
+    console.log(scrollTop, list.scrollHeight);
+    const clientH = document.documentElement.clientHeight;
+    if (scrollTop <= clientH + clientH / 4) {
+      scrollFlag = true;
+    }
+  }
   list.addEventListener(
     "touchstart",
     function (e) {
