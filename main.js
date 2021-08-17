@@ -1,6 +1,7 @@
 window.onload = function () {
   let flag = true;
   const roomEle = document.querySelector(".room");
+  let msgNum = 0
   const msg = document.querySelector('.msg')
   const id = window.localStorage.getItem("id")
     ? window.localStorage.getItem("id")
@@ -62,7 +63,10 @@ window.onload = function () {
   room.on("loginres", function (res) {
     roomEle.style.display = "block";
     roomEle.innerHTML = id;
+    console.log(res)
   });
+
+
   //消息事件
   let scrollFlag = true;
   room.on("chatmsg", function (res) {
@@ -151,14 +155,17 @@ window.onload = function () {
     if (scrollTop <= clientH + clientH / 10) {
       scrollFlag = true;
       msg.style.display = 'none'
+      msgNum = 0
     } else {
       scrollFlag = false
-      msg.style.display='block'
+      msg.style.display = 'block'
+      msg.children[0].innerHTML = ++msgNum
     }
   }
   msg.addEventListener('click', () => {
     scrollFlag = true;
     list.scrollTo(0, list.scrollHeight);
-    msg.style.display = 'none';
+    msg.style.display = 'none'
+    msgNum = 0
   })
 };
