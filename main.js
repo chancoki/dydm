@@ -62,25 +62,30 @@ window.onload = function () {
     roomEle.innerHTML = id;
   });
   //消息事件
+  let scrollFlag = true;
   room.on("chatmsg", function (res) {
-    if (list.children.length > 90) list.removeChild(list.children[0]);
+    if (scrollFlag) list.scrollTo(0, list.scrollHeight);
+
+    if (list.children.length > 150) list.removeChild(list.children[0]);
     const div = document.createElement("div");
     div.className = "duoyu";
     div.innerHTML = `
-    ${res.bl == 0 || res.bl == "" || !res.bl
+    ${
+      res.bl == 0 || res.bl == "" || !res.bl
         ? ""
         : `<div class="danm" style="background:${blColor(res.bl)};">
         <span style='background:transparent;'>${res.bl}</span>${res.bnn}</div>`
     }<div class="level" style="background:${levelColor(res.level)}">
-      <i>lv.</i>${res.level < 10 ? "0" + res.level : res.level}</div><div class="user">${
-          res.nn
-      }:</div>
+      <i>lv.</i>${
+        res.level < 10 ? "0" + res.level : res.level
+      }</div><div class="user">${res.nn}:</div>
         <div class="text" style="color:${textColor(res.bl)}">${res.txt}</div>
     `;
     list.appendChild(div);
   });
   room.on("uenter", function (res) {
-    if (list.children.length > 90) list.removeChild(list.children[0]);
+    list.scrollTo(0, list.scrollHeight);
+    if (list.children.length > 150) list.removeChild(list.children[0]);
     const div = document.createElement("div");
     div.className = "duoyu";
     div.innerHTML = `
@@ -93,8 +98,8 @@ window.onload = function () {
       <i>lv.</i>${
         res.level < 10 ? "0" + res.level : res.level
       }</div><div class="user">${
-            res.nn
-          }<span style='color:#777777;margin-left: 3px;'>欢迎来到本直播间</span></div>
+      res.nn
+    }<span style='color:#777777;margin-left: 3px;'>欢迎来到本直播间</span></div>
 
     `;
     list.appendChild(div);
@@ -135,5 +140,76 @@ window.onload = function () {
     if (n <= 124) return "#FFA717";
     if (n <= 129) return "#8916F0";
     return "#C70137";
+  }
+  list.addEventListener(
+    "mousewheel",
+    (e) => {
+      if (e.deltaY < 0) scrollFlag = false;
+      if (e.deltaY > 0) scrollFlag = true;
+    },
+    false
+  );
+  document.addEventListener('DOMMouseScroll', (e) => {
+    if (e.detail < 0) scrollFlag = false;
+    if (e.detail > 0) scrollFlag = true;
+  }, false);
+  list.addEventListener(
+    "touchstart",
+    function (e) {
+      startx = e.touches[0].pageX;
+      starty = e.touches[0].pageY;
+    },
+    false
+  );
+  list.addEventListener(
+    "touchend",
+    function (e) {
+      var endx, endy;
+      endx = e.changedTouches[0].pageX;
+      endy = e.changedTouches[0].pageY;
+      var direction = getDirection(startx, starty, endx, endy);
+      switch (direction) {
+        case 1:
+          scrollFlag = true;
+          break;
+        case 2:
+          scrollFlag = false;
+          break;
+        default:
+      }
+    },
+    false
+  );
+  var startx, starty;
+  //获得角度
+  function getAngle(angx, angy) {
+    return (Math.atan2(angy, angx) * 180) / Math.PI;
+  }
+
+  //根据起点终点返回方向 1向上 2向下 3向左 4向右 0未滑动
+  function getDirection(startx, starty, endx, endy) {
+    var angx = endx - startx;
+    var angy = endy - starty;
+    var result = 0;
+
+    //如果滑动距离太短
+    if (Math.abs(angx) < 2 && Math.abs(angy) < 2) {
+      return result;
+    }
+
+    var angle = getAngle(angx, angy);
+    if (angle >= -135 && angle <= -45) {
+      result = 1;
+    } else if (angle > 45 && angle < 135) {
+      result = 2;
+    } else if (
+      (angle >= 135 && angle <= 180) ||
+      (angle >= -180 && angle < -135)
+    ) {
+      result = 3;
+    } else if (angle >= -45 && angle <= 45) {
+      result = 4;
+    }
+    return result;
   }
 };
