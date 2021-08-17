@@ -161,7 +161,6 @@ window.onload = function () {
   );
   function scrollTime() {
     const scrollTop = list.scrollHeight - list.scrollTop;
-    console.log(scrollTop, list.scrollHeight);
     const clientH = document.documentElement.clientHeight;
     if (scrollTop <= clientH + clientH / 4) {
       scrollFlag = true;
