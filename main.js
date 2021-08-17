@@ -148,7 +148,7 @@ window.onload = function () {
   function scrollTime() {
     const scrollTop = list.scrollHeight - list.scrollTop;
     const clientH = document.documentElement.clientHeight;
-    if (scrollTop <= clientH + clientH / 4) {
+    if (scrollTop <= clientH + clientH / 10) {
       scrollFlag = true;
       msg.style.display = 'none'
     } else {
@@ -161,62 +161,4 @@ window.onload = function () {
     list.scrollTo(0, list.scrollHeight);
     msg.style.display = 'none';
   })
-  list.addEventListener(
-    "touchstart",
-    function (e) {
-      startx = e.touches[0].pageX;
-      starty = e.touches[0].pageY;
-    },
-    false
-  );
-  list.addEventListener(
-    "touchend",
-    function (e) {
-      var endx, endy;
-      endx = e.changedTouches[0].pageX;
-      endy = e.changedTouches[0].pageY;
-      var direction = getDirection(startx, starty, endx, endy);
-      switch (direction) {
-        case 1:
-          scrollFlag = true;
-          msg.style.display = 'none'
-          break;
-        case 2:
-          scrollFlag = false;
-          msg.style.display='block'
-          break;
-        default:
-      }
-    },
-    false
-  );
-  var startx, starty;
-  
-  function getAngle(angx, angy) {
-    return (Math.atan2(angy, angx) * 180) / Math.PI;
-  }
-
-  function getDirection(startx, starty, endx, endy) {
-    var angx = endx - startx;
-    var angy = endy - starty;
-    var result = 0;
-    if (Math.abs(angx) < 2 && Math.abs(angy) < 2) {
-      return result;
-    }
-
-    var angle = getAngle(angx, angy);
-    if (angle >= -135 && angle <= -45) {
-      result = 1;
-    } else if (angle > 45 && angle < 135) {
-      result = 2;
-    } else if (
-      (angle >= 135 && angle <= 180) ||
-      (angle >= -180 && angle < -135)
-    ) {
-      result = 3;
-    } else if (angle >= -45 && angle <= 45) {
-      result = 4;
-    }
-    return result;
-  }
 };
