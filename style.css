@@ -1,9 +1,13 @@
 body {
   transition: all 0.7s;
   font-size: 12px;
+  margin: 0;
+  padding: 0;
 }
 .list {
-  width: 98vw;
+  padding: 0 5px;
+  box-sizing: border-box;
+  width: 100vw;
   height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
