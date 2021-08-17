@@ -11,7 +11,7 @@ body {
   scrollbar-width: thin;
 }
 .duoyu {
-  margin-bottom: 8px;
+  margin: 8px 0;
 }
 .duoyu > div {
   display: inline;
@@ -27,6 +27,28 @@ body {
 }
 .duoyu .user {
   color: #e75924;
+}
+.msg {
+  position: fixed;
+  bottom: 20px;
+  height: 20px;
+  width: 100px;
+  left: 50%;
+  font-size: 12px;
+  line-height: 20px;
+  border-radius: 10px;
+  text-align: center;
+  transform: translateX(-50%);
+  background-color: #e75924;
+  color: aliceblue;
+  opacity: 0.1;
+  cursor: pointer;
+  transition: all 0.3s;
+  user-select: none;
+  display: none;
+}
+.msg:hover {
+  opacity: 1;
 }
 .bt {
   z-index: 9999;
@@ -71,4 +93,3 @@ body {
   background-color: rgba(198, 198, 198, 0.1);
   backdrop-filter: saturate(180%) blur(20px);
 }
-
