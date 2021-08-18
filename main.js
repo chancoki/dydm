@@ -148,7 +148,7 @@ window.onload = function () {
   function scrollTime() {
     const scrollTop = list.scrollHeight - list.scrollTop;
     const clientH = document.documentElement.clientHeight;
-    if (scrollTop <= clientH + clientH / 6) {
+    if (scrollTop <= clientH + clientH / 8) {
       scrollFlag = true;
       msg.style.display = 'none'
       msgNum = 0
