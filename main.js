@@ -77,7 +77,7 @@ window.onload = function () {
     const div = document.createElement("div");
     div.className = "duoyu";
     div.innerHTML = `
-    <div class="level" style="border: 1px solid ${blColor(res.bl)}; color: ${blColor(res.bl)}"><i>lv.</i>${
+    <div class="level" style="style="background:${blColor(res.bl)};"><i>lv.</i>${
       res.level < 10 ? "0" + res.level : res.level
     }</div>${
       res.bl == 0 || res.bl == "" || !res.bl
@@ -95,7 +95,7 @@ window.onload = function () {
     const div = document.createElement("div");
     div.className = "duoyu";
     div.innerHTML = `
-    <div class="level" style="border: 1px solid ${blColor(res.bl)}; color: ${blColor(res.bl)}"><i>lv.</i>${
+    <div class="level" style="style="background:${blColor(res.bl)};"><i>lv.</i>${
       res.level < 10 ? "0" + res.level : res.level
     }</div>${
       res.bl == 0 || res.bl == "" || !res.bl
