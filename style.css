@@ -28,13 +28,11 @@ body {
   text-align: center;
   color: aliceblue;
   box-sizing: border-box;
+  padding: 0 3px;
 }
 .duoyu div.level {
   display: inline-block;
   min-width: 38px;
-}
-.duoyu div.danm {
-  padding: 1px 3px;
 }
 .duoyu .user {
   color: #e75924;
