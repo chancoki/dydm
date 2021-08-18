@@ -77,15 +77,13 @@ window.onload = function () {
     const div = document.createElement("div");
     div.className = "duoyu";
     div.innerHTML = `
-    ${
+    <div class="level" style="border: 1px solid ${blColor(res.bl)}; color: ${blColor(res.bl)}"><i>lv.</i>${
+      res.level < 10 ? "0" + res.level : res.level
+    }</div>${
       res.bl == 0 || res.bl == "" || !res.bl
         ? ""
-        : `<div class="danm" style="background:${blColor(res.bl)};">
-        <span style='background:transparent;'>${res.bl}</span>${res.bnn}</div>`
-    }<div class="level" style="background:${levelColor(res.level)}">
-      <i>lv.</i>${
-        res.level < 10 ? "0" + res.level : res.level
-      }</div><div class="user">${res.nn}:</div>
+        : `<div class="danm" style="background:${blColor(res.bl)};"><span style='background:transparent;'>${res.bl}</span>${res.bnn}</div>`
+    }<div class="user">${res.nn}:</div>
         <div class="text" style="color:${textColor(res.bl)}">${res.txt}</div>
     `;
     list.appendChild(div);
@@ -102,13 +100,11 @@ window.onload = function () {
         ? ""
         : `<div class="danm" style="background:${blColor(res.bl)};">
         <span style='background:transparent;'>${res.bl}</span>${res.bnn}</div>`
-    }<div class="level" style="background:${levelColor(res.level)}">
-      <i>lv.</i>${
+    }<div class="level" style="border: 1px solid ${blColor(res.bl)}; color: ${blColor(res.bl)}"><i>lv.</i>${
         res.level < 10 ? "0" + res.level : res.level
       }</div><div class="user">${
       res.nn
     }<span style='color:#777777;margin-left: 3px;'>欢迎来到本直播间</span></div>
-
     `;
     list.appendChild(div);
   });
