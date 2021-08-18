@@ -19,18 +19,22 @@ body {
 }
 .duoyu > div {
   display: inline;
+  min-width: 10px;
 }
 .duoyu .danm,
 .duoyu .level {
   margin-right: 3px;
-  padding: 0 3px;
   border-radius: 3px;
   text-align: center;
   color: aliceblue;
+  box-sizing: border-box;
 }
 .duoyu div.level {
   display: inline-block;
-  width: 34px;
+  min-width: 38px;
+}
+.duoyu div.danm {
+  padding: 1px 3px;
 }
 .duoyu .user {
   color: #e75924;
